@@ -31,7 +31,10 @@ public class FornecedorController {
 
     @PostMapping
     public ResponseEntity<Fornecedor> cadastrarFornecedor(@RequestBody @Valid Fornecedor fornecedor) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorRepository.save(fornecedor));
+
+        Fornecedor salvarfornecedor = fornecedorRepository.save(fornecedor);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorRepository.save(salvarfornecedor));
     }
 
     @GetMapping

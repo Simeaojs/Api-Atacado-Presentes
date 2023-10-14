@@ -29,7 +29,10 @@ public class ItemPedidoController {
 
     @PostMapping
     public ResponseEntity<ItemPedido> cadastrarItemDoPedido(@RequestBody @Valid ItemPedido itensDoPedido) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(itensDoPedidoRepository.save(itensDoPedido));
+
+        ItemPedido salvaritensDoPedido = itensDoPedidoRepository.save(itensDoPedido);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(itensDoPedidoRepository.save(salvaritensDoPedido));
     }
 
     @GetMapping
@@ -50,6 +53,7 @@ public class ItemPedidoController {
 
         if (itemExistente.isPresent()) {
             itemExistente.get().setQuantidade(itensdoPedido.getQuantidade());
+
             return ResponseEntity.status(HttpStatus.OK).body(itensDoPedidoRepository.save(itemExistente.get()));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -59,10 +63,13 @@ public class ItemPedidoController {
     public ResponseEntity<String> deletarItemPeloId(@PathVariable("id") Long id) {
 
         Optional<ItemPedido> itensDoPedido = itensDoPedidoRepository.findById(id);
+
         if (itensDoPedido.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
         itensDoPedidoRepository.deleteById(id);
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedidos de itens deletado com Sucesso!");
     }
 

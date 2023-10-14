@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +32,15 @@ public class AvaliacaoProdutoController {
     @PostMapping
     public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(
             @RequestBody @Valid AvaliacaoProduto avaliacaoProduto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
+
+        AvaliacaoProduto salvarAvaliacao = avaliacaoProdutoRepository.save(avaliacaoProduto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(salvarAvaliacao));
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<AvaliacaoProduto>> listarTodasAvaliacoes(Pageable paginacao) {
+        return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProdutoRepository.findAll(paginacao));
     }
 
     @GetMapping("/produto/{id}")
@@ -82,6 +92,7 @@ public class AvaliacaoProdutoController {
         }
 
         avaliacaoProdutoRepository.deleteById(id);
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Avaliação deletada com sucesso");
 
     }

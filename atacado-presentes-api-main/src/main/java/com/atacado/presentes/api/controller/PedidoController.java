@@ -62,6 +62,7 @@ public class PedidoController {
 
             pedidoCadastrado.get().setData(pedido.getData());
             pedidoCadastrado.get().setStatus(pedido.getStatus());
+            pedidoCadastrado.get().setCliente(pedido.getCliente());
 
             return ResponseEntity.status(HttpStatus.OK).body(pedidoRepository.save(pedidoCadastrado.get()));
         }

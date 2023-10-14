@@ -30,8 +30,9 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @PostMapping
-    public ResponseEntity<?> cadastrarCategoria(@RequestBody @Valid Usuario usuario) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
+    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Valid Usuario usuario) {
+        Usuario salvarUsuario = usuarioRepository.save(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(salvarUsuario));
     }
 
     @GetMapping
@@ -51,7 +52,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarUsuario(@PathVariable("id") Long id, @RequestBody @ Valid Usuario usuario) {
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable("id") Long id, @RequestBody @Valid Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {
@@ -67,7 +68,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> removerPeloId(@PathVariable Long id) {
+    public ResponseEntity<String> removerPeloId(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {

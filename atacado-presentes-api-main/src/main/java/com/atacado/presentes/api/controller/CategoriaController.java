@@ -30,7 +30,10 @@ public class CategoriaController {
 
     @PostMapping
     public ResponseEntity<Categoria> cadastrarCategoria(@RequestBody @Valid Categoria categoria) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
+
+        Categoria salvarCategoria = categoriaRepository.save(categoria);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(salvarCategoria));
     }
 
     @GetMapping
@@ -50,7 +53,8 @@ public class CategoriaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Categoria> atualizarCategoria(@PathVariable("id") Long id, @RequestBody @Valid Categoria categoria) {
+    public ResponseEntity<Categoria> atualizarCategoria(@PathVariable("id") Long id,
+            @RequestBody @Valid Categoria categoria) {
         Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
 
         if (categoriaExistente.isPresent()) {

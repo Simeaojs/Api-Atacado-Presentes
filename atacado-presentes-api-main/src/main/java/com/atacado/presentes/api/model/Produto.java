@@ -44,8 +44,7 @@ public class Produto {
     private Fornecedor fornecedor;
 
     @ManyToMany
-    @JoinTable(name = "tb_produtos_categorias", joinColumns = {
-            @JoinColumn(name = "idProduto") }, inverseJoinColumns = { @JoinColumn(name = "idCategoria") })
+    @JoinColumn(name = "idCategoria")
     private List<Categoria> categorias;
 
 }
