@@ -20,12 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.Fornecedor;
 import com.atacado.presentes.api.repository.FornecedorRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/fornecedores")
 public class FornecedorController {
 
+    @Autowired
+    private FornecedorRepository fornecedorRepository;
+
     @PostMapping
-    public ResponseEntity<Fornecedor> cadastrarFornecedor(@RequestBody Fornecedor fornecedor) {
+    public ResponseEntity<Fornecedor> cadastrarFornecedor(@RequestBody @Valid Fornecedor fornecedor) {
         return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorRepository.save(fornecedor));
     }
 
@@ -47,7 +52,7 @@ public class FornecedorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Fornecedor> atualizarFornecedor(@PathVariable("id") Long id,
-            @RequestBody Fornecedor fornecedor) {
+            @RequestBody @Valid Fornecedor fornecedor) {
         Optional<Fornecedor> fornecedorExistente = fornecedorRepository.findById(id);
 
         if (fornecedorExistente.isPresent()) {
@@ -75,6 +80,4 @@ public class FornecedorController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Fornecedor deletado com sucesso!");
     }
 
-    @Autowired
-    private FornecedorRepository fornecedorRepository;
 }

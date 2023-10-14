@@ -11,7 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,13 +28,13 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
 
-    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
-    @NotEmpty(message = "Email cannot be empty")
     @Column(nullable = false, length = 100, unique = true)
+    @Email(message = "Email inválido")
+    @NotBlank(message = "O e-mail deve ser preenchido!")
     private String email;
 
-    @Pattern(regexp  = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,16}$")
     @Column(nullable = false, length = 20)
+    @Pattern(regexp  = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,16}$",message = "A senha deve conter no mínimo 8 caracteres, no mínimo uma letra maiúscula, no mínimo uma letra minúscula, no mínimo um caractere especial e no mínimo um número.")
     private String senha;
 
     @Column(nullable = false, length = 20)
@@ -42,7 +42,7 @@ public class Usuario {
     private Perfil perfil;
 
     @Column(length = 50)
-    @Pattern(regexp = "\\d{2}.\\d{4,5}-\\d{4}")
+    @Pattern(regexp = "\\d{2}.\\d{4,5}-\\d{4}",message = " O telefone deve seguir o Formato: XX-XXXXX-XXXX")
     private String telefone;
 
 }

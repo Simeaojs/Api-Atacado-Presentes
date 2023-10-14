@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.Usuario;
 import com.atacado.presentes.api.repository.UsuarioRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -28,7 +30,7 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @PostMapping
-    public ResponseEntity<?> cadastrarCategoria(@RequestBody Usuario usuario) {
+    public ResponseEntity<?> cadastrarCategoria(@RequestBody @Valid Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
@@ -49,7 +51,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+    public ResponseEntity<?> atualizarUsuario(@PathVariable("id") Long id, @RequestBody @ Valid Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {

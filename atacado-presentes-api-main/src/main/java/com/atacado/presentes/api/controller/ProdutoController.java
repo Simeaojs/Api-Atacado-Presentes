@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.Produto;
 import com.atacado.presentes.api.repository.ProdutoRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/produtos")
 public class ProdutoController {
@@ -29,7 +31,7 @@ public class ProdutoController {
     private ProdutoRepository produtosRepository;
 
     @PostMapping
-    public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto produtos) {
+    public ResponseEntity<Produto> cadastrarProduto(@RequestBody @Valid Produto produtos) {
 
         Produto produto = produtosRepository.save(produtos);
 
@@ -55,8 +57,19 @@ public class ProdutoController {
         return ResponseEntity.ok().body(produto);
     }
 
+    @GetMapping("/categorias/{idCategoria}")
+    public ResponseEntity<List<Produto>> produtosPorCategoria(@PathVariable("idCategoria") Long idCategoria) {
+
+        List<Produto> produtos = produtosRepository.findByProdutosPorCategorias(idCategoria);
+
+        if (produtos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(produtos);
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> atualizarProduto(@PathVariable("id") Long id, @RequestBody Produto produtos) {
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable("id") Long id, @RequestBody @Valid Produto produtos) {
 
         Optional<Produto> produtoExistente = produtosRepository.findById(id);
 
@@ -88,16 +101,5 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Produto deletado com sucesso!");
 
     }
-
-    @GetMapping("/categorias/{idCategoria}")
-    public ResponseEntity<List<Produto>> produtosPorCategoria(@PathVariable("idCategoria") Long idCategoria){
-
-        List<Produto> produtos = produtosRepository.findByProdutosPorCategorias(idCategoria);
-
-        if(produtos.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(produtos);
-    }  
 
 }

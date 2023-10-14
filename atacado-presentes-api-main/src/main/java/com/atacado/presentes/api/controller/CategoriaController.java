@@ -19,12 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.Categoria;
 import com.atacado.presentes.api.repository.CategoriaRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @PostMapping
+    public ResponseEntity<Categoria> cadastrarCategoria(@RequestBody @Valid Categoria categoria) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
+    }
 
     @GetMapping
     public ResponseEntity<Page<Categoria>> listarCategorias(Pageable paginacao) {
@@ -42,13 +49,8 @@ public class CategoriaController {
         return ResponseEntity.status(HttpStatus.OK).body(categoria.get());
     }
 
-    @PostMapping
-    public ResponseEntity<Categoria> cadastrarCategoria(@RequestBody Categoria categoria) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
-    }
-
     @PutMapping("/{id}")
-    public ResponseEntity<Categoria> atualizarCategoria(@PathVariable("id") Long id, @RequestBody Categoria categoria) {
+    public ResponseEntity<Categoria> atualizarCategoria(@PathVariable("id") Long id, @RequestBody @Valid Categoria categoria) {
         Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
 
         if (categoriaExistente.isPresent()) {
