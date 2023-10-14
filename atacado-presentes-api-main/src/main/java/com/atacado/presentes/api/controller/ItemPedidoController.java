@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.ItemPedido;
 import com.atacado.presentes.api.repository.ItemPedidoRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/itens-pedido")
 public class ItemPedidoController {
@@ -26,7 +28,7 @@ public class ItemPedidoController {
     private ItemPedidoRepository itensDoPedidoRepository;
 
     @PostMapping
-    public ResponseEntity<ItemPedido> cadastrarItemDoPedido(@RequestBody ItemPedido itensDoPedido) {
+    public ResponseEntity<ItemPedido> cadastrarItemDoPedido(@RequestBody @Valid ItemPedido itensDoPedido) {
         return ResponseEntity.status(HttpStatus.CREATED).body(itensDoPedidoRepository.save(itensDoPedido));
     }
 
@@ -43,7 +45,7 @@ public class ItemPedidoController {
     @PutMapping("/{id}")
     public ResponseEntity<ItemPedido> atualizarItem(
             @PathVariable("id") Long idItem,
-            @RequestBody ItemPedido itensdoPedido) {
+            @RequestBody @Valid ItemPedido itensdoPedido) {
         Optional<ItemPedido> itemExistente = itensDoPedidoRepository.findById(idItem);
 
         if (itemExistente.isPresent()) {

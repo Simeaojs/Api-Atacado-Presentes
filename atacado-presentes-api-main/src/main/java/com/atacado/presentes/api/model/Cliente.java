@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,13 +28,16 @@ public class Cliente {
     private Long idCliente;
 
     @Column(nullable = false, length = 50)
+    @NotBlank(message = "O nome é obrigatório")
     private String nome;
 
     @Column(nullable = false, length = 255)
+    @NotBlank(message = "O sobrenome é obrigatório")
     private String sobrenome;
 
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotBlank(message = "A data de nascimento é obrigatoria")
     private LocalDate dataNascimento;
 
     @Embedded

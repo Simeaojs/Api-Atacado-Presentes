@@ -20,12 +20,20 @@ import com.atacado.presentes.api.model.Pedido;
 import com.atacado.presentes.api.repository.PedidoRepository;
 import com.atacado.presentes.api.services.EmailService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/pedidos")
 public class PedidoController {
 
+    @Autowired
+    private PedidoRepository pedidoRepository;
+
+    @Autowired
+    private EmailService emailService;
+
     @PostMapping
-    public ResponseEntity<Pedido> cadastrarPedido(@RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> cadastrarPedido(@RequestBody @Valid Pedido pedido) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoRepository.save(pedido));
     }
 
@@ -46,7 +54,7 @@ public class PedidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pedido> atualizarPedido(@PathVariable("id") Long id, @RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> atualizarPedido(@PathVariable("id") Long id, @RequestBody @Valid Pedido pedido) {
         Optional<Pedido> pedidoCadastrado = pedidoRepository.findById(id);
 
         if (pedidoCadastrado.isPresent()) {
@@ -73,11 +81,5 @@ public class PedidoController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Pedido excluido com sucesso!");
     }
-
-    @Autowired
-    private PedidoRepository pedidoRepository;
-
-    @Autowired
-    private EmailService emailService;
 
 }

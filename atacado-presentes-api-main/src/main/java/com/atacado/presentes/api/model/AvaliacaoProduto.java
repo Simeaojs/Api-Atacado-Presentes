@@ -24,7 +24,7 @@ public class AvaliacaoProduto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAvaliacaoProduto;
 
-    @Min(1)
+    @Min(value = 1, message = "A pontuação deve ser maior que zero")
     @Column(nullable = true)
     private Integer pontuacao;
 

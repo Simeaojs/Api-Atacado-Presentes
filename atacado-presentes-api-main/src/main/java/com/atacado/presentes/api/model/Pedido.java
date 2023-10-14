@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,10 +31,12 @@ public class Pedido {
 
     @Column(nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotBlank(message = "A data do pedido é obrigatoria")
     private LocalDate data;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotBlank(message = "O status do pedido é obrigatoria")
     private Status status;
 
     @ManyToOne

@@ -18,42 +18,47 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atacado.presentes.api.model.AvaliacaoProduto;
 import com.atacado.presentes.api.repository.AvaliacaoProdutoRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/avaliacoes-produto")
 public class AvaliacaoProdutoController {
 
+    @Autowired
+    private AvaliacaoProdutoRepository avaliacaoProdutoRepository;
+
     @PostMapping
-    public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(@RequestBody AvaliacaoProduto avaliacaoProduto) {
+    public ResponseEntity<AvaliacaoProduto> cadastrarNovaAvaliacao(
+            @RequestBody @Valid AvaliacaoProduto avaliacaoProduto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoProdutoRepository.save(avaliacaoProduto));
     }
 
-   
     @GetMapping("/produto/{id}")
     public ResponseEntity<List<AvaliacaoProduto>> listarAvaliacoesDoProduto(@PathVariable("id") Long produtoId) {
         Optional<List<AvaliacaoProduto>> avaliacoesDoProduto = avaliacaoProdutoRepository.findByProduto(produtoId);
-        
+
         if (avaliacoesDoProduto.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-    
+
         return ResponseEntity.status(HttpStatus.OK).body(avaliacoesDoProduto.get());
     }
 
-@GetMapping("/{id}")
-public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
-    Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id") Long id) {
+        Optional<AvaliacaoProduto> avaliacaoProduto = avaliacaoProdutoRepository.findById(id);
 
-    if (avaliacaoProduto.isEmpty()) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        if (avaliacaoProduto.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
     }
-
-    return ResponseEntity.status(HttpStatus.OK).body(avaliacaoProduto.get());
-}
 
     @PutMapping("/{id}")
     public ResponseEntity<AvaliacaoProduto> atualizarAvaliacaoProduto(
             @PathVariable("id") Long id,
-            @RequestBody AvaliacaoProduto avaliacaoProduto) {
+            @RequestBody @Valid AvaliacaoProduto avaliacaoProduto) {
         Optional<AvaliacaoProduto> avaliacaoProdutoExistente = avaliacaoProdutoRepository.findById(id);
 
         if (avaliacaoProdutoExistente.isPresent()) {
@@ -79,10 +84,6 @@ public ResponseEntity<AvaliacaoProduto> buscarAvaliacaoPeloId(@PathVariable("id"
         avaliacaoProdutoRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Avaliação deletada com sucesso");
 
-        
     }
-
-    @Autowired
-    private AvaliacaoProdutoRepository avaliacaoProdutoRepository;
 
 }

@@ -24,6 +24,7 @@ public class ItemPedido {
 
     @Min(1)
     @Column(nullable = false)
+    @Min(value = 1, message = "A quantidade deve ser maior que zero")
     private Integer quantidade;
 
     @ManyToOne

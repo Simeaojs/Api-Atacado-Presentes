@@ -20,12 +20,21 @@ import com.atacado.presentes.api.model.Cliente;
 import com.atacado.presentes.api.model.Usuario;
 import com.atacado.presentes.api.repository.ClienteRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @PostMapping
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody @Valid Cliente cliente) {
+        Usuario usuario = cliente.getUsuario();
+        cliente.setUsuario(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(cliente));
+    }
 
     @GetMapping
     public ResponseEntity<Page<Cliente>> listarClientes(Pageable paginacao) {
@@ -43,15 +52,8 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
     }
 
-    @PostMapping
-    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
-        Usuario usuario = cliente.getUsuario();
-        cliente.setUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(cliente));
-    }
-
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizarCliente(@PathVariable("id") Long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable("id") Long id, @RequestBody @Valid Cliente cliente) {
         Optional<Cliente> clienteExistente = clienteRepository.findById(id);
 
         if (clienteExistente.isPresent()) {
