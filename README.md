@@ -17,7 +17,7 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 5.Inicie a aplicação: `mvn spring-boot:run`
 
 ## Modelo de Dados
-![modelo_dados]()
+![modelo_dados](https://github.com/Simeaojs/Api-Atacado-Presentes/blob/main/atacado-presentes-api-main/src/main/resources/db/model/modelo_dados.png)
 
 
 
