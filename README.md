@@ -85,7 +85,16 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 - `DELETE /avaliacoes-produto/{id}:` Permite excluir uma avaliação de produto com base no ID fornecido na URL.
 
 ### Envio de E-mail 
-- Serviço para enviar notificações por e-mail aos clientes quando o status de seus pedidos é atualizado. Ele utiliza o JavaMailSender para enviar e-mails e é acionado quando uma mudança de status no pedido é detectada. 
+- Serviço para enviar notificações por e-mail aos clientes quando o status de seus pedidos é atualizado. Ele utiliza o JavaMailSender para enviar e-mails e é acionado quando uma mudança de status no pedido é detectada.
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você identificar problemas ou melhorias, sinta-se à vontade para abrir um pull request.
+
+## Licença 
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
 
 
 
