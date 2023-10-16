@@ -8,6 +8,7 @@
 - Java 17
 - Spring Boot 3.1.4
 - Spring Data JPA
+- JavaMailSender
 - Banco de Dados (MySQL)
 - Gerenciador de Dependências Maven
 - Postman Para Requisições
@@ -75,7 +76,17 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 - `PUT /itens-pedido/{id}:` Permite atualizar as informações de um item de pedido com base no ID fornecido na URL.
 - `DELETE /itens-pedido/{id}:` Permite excluir um item de pedido com base no ID fornecido na URL. 
 
-  
+### Avaliação dos produtos 
+- `POST /avaliacoes-produto:` Permite cadastrar uma nova avaliação de produto.
+- `GET /avaliacoes-produto:` Retorna uma lista paginada de todas as avaliações de produto cadastradas. 
+- `GET /avaliacoes-produto/produto/{id}:` Retorna uma lista de avaliações de um produto específico com base no ID do produto fornecido na URL. 
+- `GET /avaliacoes-produto/{id}:` Retorna uma avaliação de produto específica com base no ID fornecido na URL.
+- `PUT /avaliacoes-produto/{id}:` Permite atualizar as informações de uma avaliação de produto com base no ID fornecido na URL.
+- `DELETE /avaliacoes-produto/{id}:` Permite excluir uma avaliação de produto com base no ID fornecido na URL.
+
+### Envio de E-mail 
+- Serviço para enviar notificações por e-mail aos clientes quando o status de seus pedidos é atualizado. Ele utiliza o JavaMailSender para enviar e-mails e é acionado quando uma mudança de status no pedido é detectada. 
+
 
 
 
