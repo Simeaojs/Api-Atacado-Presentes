@@ -31,7 +31,22 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 - `GET /usuarios:` Retorna uma lista paginada de todos os usuários cadastrados.
 - `GET /usuarios/{id}:` Retorna um usuário específico com base no ID fornecido na URL.
 - `PUT /usuarios/{id}:` Permite atualizar as informações de um usuário com base no ID fornecido na URL.
-- `DELETE /usuarios/{id}:` Permite excluir um usuário com base no ID fornecido na URL. 
+- `DELETE /usuarios/{id}:` Permite excluir um usuário com base no ID fornecido na URL.
+
+### Clientes
+- `POST /clientes:` Permite cadastrar um novo cliente.
+- `GET /clientes:` Retorna uma lista paginada de todos os clientes cadastrados. 
+- `GET /clientes/{id}:` Retorna um cliente específico com base no ID fornecido na URL.
+- `PUT /clientes/{id}:` Permite atualizar as informações de um cliente com base no ID fornecido na URL.
+- `DELETE /clientes/{id}:` Permite excluir um cliente com base no ID fornecido na URL.
+
+### Fornecedores
+- `POST /fornecedores:` Permite cadastrar um novo fornecedor.
+- `GET /fornecedores:` Retorna uma lista paginada de todos os fornecedores cadastrados.
+- `GET /fornecedores/{id}:` Retorna um fornecedor específico com base no ID fornecido na URL.
+- `PUT /fornecedores/{id}:` Permite atualizar as informações de um fornecedor com base no ID fornecido na URL.
+- `DELETE /fornecedores/{id}:` Permite excluir um fornecedor com base no ID fornecido na URL.
+
 
   
 
