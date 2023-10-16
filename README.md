@@ -16,3 +16,8 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 
 5.Inicie a aplicação: `mvn spring-boot:run`
 
+## Modelo de Dados
+![modelo_dados]()
+
+
+
