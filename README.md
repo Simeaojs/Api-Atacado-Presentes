@@ -47,6 +47,33 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 - `PUT /fornecedores/{id}:` Permite atualizar as informações de um fornecedor com base no ID fornecido na URL.
 - `DELETE /fornecedores/{id}:` Permite excluir um fornecedor com base no ID fornecido na URL.
 
+### Categorias
+- `POST /categorias:` Permite cadastrar uma nova categoria.
+- `GET /categorias:` Retorna uma lista paginada de todas as categorias cadastradas.
+- `GET /categorias/{id}:` Retorna uma categoria específica com base no ID fornecido na URL.
+- `PUT /categorias/{id}:` Permite atualizar as informações de uma categoria com base no ID fornecido na URL.
+- `DELETE /categorias/{id}:` Permite excluir uma categoria com base no ID fornecido na URL. 
+
+### Produtos
+- `POST /produtos:` Permite cadastrar um novo produto. 
+- `GET /produtos:` Retorna uma lista paginada de todos os produtos cadastrados. 
+- `GET /produtos/{id}:` Retorna um produto específico com base no ID fornecido na URL.
+- `PUT /produtos/{id}:` Permite atualizar as informações de um produto com base no ID fornecido na URL. 
+- `DELETE /produtos/{id}:` Permite excluir um produto com base no ID fornecido na URL.
+
+### Pedidos
+- `POST /pedidos:` Permite cadastrar um novo pedido.
+- `GET /pedidos:` Retorna uma lista paginada de todos os pedidos cadastrados. 
+- `GET /pedidos/{id}:` Retorna um pedido específico com base no ID fornecido na URL. 
+- `PUT /pedidos/{id}:` Permite atualizar as informações de um pedido com base no ID fornecido na URL. 
+- `Delete /pedidos/{id}:` Permite excluir um pedido com base no ID fornecido na URL.
+
+### Itens do Pedido 
+- `POST /itens-pedido:` Permite cadastrar um novo item de pedido.
+- `GET /itens-pedido:` Retorna uma lista de todos os itens de pedido cadastrados.
+- `GET /itens-pedido/{id}:` Retorna um item de pedido específico com base no ID fornecido na URL.
+- `PUT /itens-pedido/{id}:` Permite atualizar as informações de um item de pedido com base no ID fornecido na URL.
+- `DELETE /itens-pedido/{id}:` Permite excluir um item de pedido com base no ID fornecido na URL. 
 
   
 
