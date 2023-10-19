@@ -35,7 +35,7 @@ public class ProdutoController {
 
         Produto produto = produtosRepository.save(produtos);
 
-        return ResponseEntity.ok().body(produto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(produto);
     }
 
     @GetMapping
