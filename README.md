@@ -9,6 +9,7 @@ Este projeto é uma aplicação web desenvolvida com Java e Spring Boot, que ofe
 - Java 17
 - Spring Boot 3.1.4
 - Spring Data JPA
+- Spring Security (JWT)
 - JavaMailSender
 - Banco de Dados (MySQL)
 - Gerenciador de Dependências Maven
@@ -34,6 +35,7 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 - Avaliações de produtos feitas por clientes.
 - Notificações por e-mail para informar os clientes sobre mudanças no status de seus pedidos.
 - Consulta de informações de endereço com base em um CEP.
+- Autenticação e Autorização com Json Web Token
 
 ## 🌱Contribuição
 
