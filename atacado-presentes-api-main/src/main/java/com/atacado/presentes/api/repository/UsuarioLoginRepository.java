@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.atacado.presentes.api.model.UsuarioLogin;
 
-public interface UsuarioLoginRepository extends JpaRepository<UsuarioLogin, String> {
+public interface UsuarioLoginRepository extends JpaRepository<UsuarioLogin, Long> {
 
     UserDetails findByLogin(String login);
 

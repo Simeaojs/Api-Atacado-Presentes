@@ -29,7 +29,7 @@ public class UsuarioLogin implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @Column(nullable = false, length = 100, unique = true)
     @NotBlank(message = "O login é obrigatório")
