@@ -19,7 +19,8 @@ As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do proj
 - **[Lombok](https://projectlombok.org)**
 - **[ Postman](https://www.postman.com/downloads/)**
 - **[Visual Studio Code](https://code.visualstudio.com/download)**
-
+- **[JUnit5](https://junit.org/junit5/)**
+- **[Mockito](https://site.mockito.org/)**
 
 
 ## 🪛Configuração do Ambiente
