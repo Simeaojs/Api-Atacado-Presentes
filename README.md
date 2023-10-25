@@ -5,16 +5,21 @@ Este projeto é uma aplicação web desenvolvida com Java e Spring Boot, que ofe
 
 
 ## ⚒️Tecnologias Utilizadas
+As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do projeto:
 
-- Java 17
-- Spring Boot 3.1.4
-- Spring Data JPA
-- Spring Security (JWT)
-- JavaMailSender
-- Banco de Dados (MySQL)
-- Gerenciador de Dependências Maven
-- Postman Para Requisições
-- IDE Visual Studio Code
+- **[Java 17](https://www.oracle.com/java)**
+- **[Spring Boot 3](https://spring.io/projects/spring-boot)**
+- **[Spring Data JPA](https://spring.io/projects/spring-data-jpa)**
+- **[Spring Security](https://spring.io/projects/spring-security)**
+- **[JavaMailSender](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/mail/javamail/JavaMailSender.html)**
+- **[MySQL](https://www.mysql.com)**
+- **[Hibernate](https://hibernate.org)**
+- **[Maven](https://maven.apache.org)**
+- **[Flyway](https://flywaydb.org)**
+- **[Lombok](https://projectlombok.org)**
+- **[ Postman](https://www.postman.com/downloads/)**
+- **[Visual Studio Code](https://code.visualstudio.com/download)**
+
 
 
 ## 🪛Configuração do Ambiente
