@@ -34,19 +34,20 @@ Para configurar o ambiente de desenvolvimento e iniciar a API em sua máquina lo
 
 ## 📋Funcionalidades
 
-- Cadastro e gerenciamento de produtos, categorias e fornecedores.
-- Registro e atualização de clientes, associados a usuários.
-- Criação e atualização de pedidos de produtos.
-- Avaliações de produtos feitas por clientes.
-- Notificações por e-mail para informar os clientes sobre mudanças no status de seus pedidos.
-- Consulta de informações de endereço com base em um CEP.
-- Autenticação e Autorização com Json Web Token
+- [x] Cadastro e gerenciamento de produtos, categorias e fornecedores;
+- [x] Registro e atualização de clientes, associados a usuários;
+- [x] Criação e atualização de pedidos de produtos;
+- [x] Avaliações de produtos feitas por clientes;
+- [x] Notificações por e-mail para informar os clientes sobre mudanças no status de seus pedidos;
+- [x] Consulta de informações de endereço com base em um CEP;
+- [x] Autenticação e Autorização com Json Web Token.
+
 
 ## 🌱Contribuição
 
 Contribuições são bem-vindas! Se você identificar problemas ou melhorias, sinta-se à vontade para abrir um pull request.
 
-## Licença 
+## 📝Licença 
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
